@@ -1,5 +1,5 @@
-#include "Clock.h"
-#include <ctime>
+#include"Clock.h"
+#include<ctime>
 
 long int Clock::getTime() {
 	std::time_t currentTime = std::time(nullptr);

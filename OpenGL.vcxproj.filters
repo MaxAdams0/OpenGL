@@ -31,6 +31,9 @@
     <Filter Include="Header Files\Engine">
       <UniqueIdentifier>{d2c00961-3125-4dac-8f29-81d0c229075b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\3D Objects">
+      <UniqueIdentifier>{9cfbf3a6-24af-4010-a876-ccfb4d7b1996}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -68,13 +71,16 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="stb.cpp">
-      <Filter>Source Files\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
     <ClCompile Include="VAO.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshHandler.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,9 +92,6 @@
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="EBO.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjFileLoader.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
@@ -103,6 +106,15 @@
     <ClInclude Include="Clock.h">
       <Filter>Header Files\Clock</Filter>
     </ClInclude>
+    <ClInclude Include="OBJ_Loader.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshHandler.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="planks.png">
@@ -111,5 +123,10 @@
     <Image Include="planksSpec.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Peach.obj">
+      <Filter>Resource Files\3D Objects</Filter>
+    </Object>
   </ItemGroup>
 </Project>

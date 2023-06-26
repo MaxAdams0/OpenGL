@@ -1,7 +1,8 @@
+#pragma once
 #ifndef CLOCK_CLASS_H
 #define CLOCK_CLASS_H
 
-class Clock 
+class Clock
 {
 	private:
 		float hour_hand_rot; // 360° per hour
