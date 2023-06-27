@@ -13,7 +13,6 @@
 #include"VBO.h"
 #include"EBO.h"
 #include"Clock.h"
-#include"MeshHandler.h"
 
 
 /*
@@ -70,7 +69,7 @@ GLuint lightIndices[] =
 const unsigned int winResW = 800;
 const unsigned int winResH = 800;
 
-MeshHandler MeshHandler_(std::vector<std::string> {"Peach.obj"});
+
 
 int main(void)
 {
