@@ -30,7 +30,7 @@
     <ClCompile Include="EBO.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ObjFileHandler.cpp" />
+    <ClCompile Include="OBJ.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VAO.cpp" />
@@ -40,7 +40,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="EBO.h" />
-    <ClInclude Include="ObjFileHandler.h" />
+    <ClInclude Include="OBJ.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="VAO.h" />

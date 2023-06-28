@@ -77,7 +77,7 @@
     <ClCompile Include="VAO.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="ObjFileHandler.cpp">
+    <ClCompile Include="OBJ.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -103,7 +103,7 @@
     <ClInclude Include="Clock.h">
       <Filter>Header Files\Clock</Filter>
     </ClInclude>
-    <ClInclude Include="ObjFileHandler.h">
+    <ClInclude Include="OBJ.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>

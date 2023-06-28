@@ -13,6 +13,7 @@
 #include"VBO.h"
 #include"EBO.h"
 #include"Clock.h"
+#include"OBJ.h"
 
 
 /*
@@ -21,22 +22,6 @@
 	The rest is mine, just to clarify =)
 	ObjLoader, Clock
 */
-
-// Vertices coordinates
-GLfloat vertices[] =
-{ //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
-	-1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
-	-1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-	 1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-	 1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
-};
-
-// Indices for vertices order
-GLuint indices[] =
-{
-	0, 1, 2,
-	0, 2, 3
-};
 
 GLfloat lightVertices[] =
 { //     COORDINATES     //
@@ -69,8 +54,6 @@ GLuint lightIndices[] =
 const unsigned int winResW = 800;
 const unsigned int winResH = 800;
 
-
-
 int main(void)
 {
 	glfwInit();
@@ -88,10 +71,19 @@ int main(void)
 	gladLoadGL();
 	glViewport(0, 0, winResW, winResH);
 
+	obj::Handler objHandler;
+	objHandler.loadFile("Peach.obj");
+	if (!objHandler.getFile("Peach.obj").isValid()) { return -1; }
+	const int verticeCount = objHandler.getFile("Peach.obj").getVerticies().size() * 3;
+	for (GLfloat[3] : objHandler.getFile("Peach.obj").getVerticies())
+	{
+
+	}
+
 	Shader shaderProgram("default.vert", "default.frag");
 	VAO VAO1;
 	VAO1.Bind();
-	VBO VBO1(vertices, sizeof(vertices));
+	VBO VBO1(, sizeof(vertices));
 	EBO EBO1(indices, sizeof(indices));
 	/* Links VBO attributes (i.e. coord, color, texture coords, etc.) */
 	VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);
