@@ -18,9 +18,9 @@
 
 /*
 	A lot of the basic core functions in the engine are derived from
-	https://www.youtube.com/watch?v=45MIykWJ-C4&t=237s
-	The rest is mine, just to clarify =)
-	ObjLoader, Clock
+	https://www.youtube.com/watch?v=45MIykWJ-C4&t=237s Thanks Cherno!
+	The listed below are 100% my own work, and others may still be modified
+	OBH.h, Clock.h
 */
 
 GLfloat lightVertices[] =
@@ -56,6 +56,7 @@ const unsigned int winResH = 800;
 
 int main(void)
 {
+	/* Initialize glfw, glad, window, & parameters */
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -71,19 +72,39 @@ int main(void)
 	gladLoadGL();
 	glViewport(0, 0, winResW, winResH);
 
+	/* ========== IM SORRY FILELOADING WILL BE LESS MESSY LATER ========== */
 	obj::Handler objHandler;
 	objHandler.loadFile("Peach.obj");
 	if (!objHandler.getFile("Peach.obj").isValid()) { return -1; }
-	const int verticeCount = objHandler.getFile("Peach.obj").getVerticies().size() * 3;
-	for (GLfloat[3] : objHandler.getFile("Peach.obj").getVerticies())
-	{
 
+	/* Convert std::vector<GLfloat[3]> to GLfloat* (vertices) */
+	std::vector<GLfloat> verticeVertex;
+	size_t elemCountV = verticeVertex.size() * 3;
+	/* A type followed by a pointer is alled a dynamic array */
+	GLfloat* vertices = new GLfloat[elemCountV];
+	/* Copy data from the vector to array */
+	size_t iV = 0;
+	for (const auto& vertex : verticeVertex) {
+		std::copy(vertex, vertex + 3, vertices + iV);
+		iV += 3;
+	}
+
+	/* Convert std::vector<GLfloat[3]> to GLfloat* (vertices) */
+	std::vector<GLuint> indiceVertex;
+	size_t elemCountI = indiceVertex.size() * 3;
+	/* A type followed by a pointer is alled a dynamic array */
+	GLuint* indices = new GLuint[elemCountI];
+	/* Copy data from the vector to array */
+	size_t iI = 0;
+	for (const auto& index : indiceVertex) {
+		std::copy(index, index + 3, indices + iI);
+		iI += 3;
 	}
 
 	Shader shaderProgram("default.vert", "default.frag");
 	VAO VAO1;
 	VAO1.Bind();
-	VBO VBO1(, sizeof(vertices));
+	VBO VBO1(vertices, sizeof(vertices));
 	EBO EBO1(indices, sizeof(indices));
 	/* Links VBO attributes (i.e. coord, color, texture coords, etc.) */
 	VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 11 * sizeof(float), (void*)0);

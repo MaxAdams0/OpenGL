@@ -6,13 +6,13 @@ void obj::Handler::loadFile(const std::string filename)
 
 	std::ifstream objFile;
 	objFile.open(filename);
-	if (!objFile.is_open()); // add return later
+	//if (!objFile.is_open())
 
 	std::stringstream ssfile;
 	ssfile << objFile.rdbuf();
 
-	std::vector<GLfloat[3]> verticies;
-	std::vector<int[3]> indicies;
+	std::vector<GLfloat[3]> vertices;
+	std::vector<GLuint[3]> indices;
 	//std::vector<int[3]> verticeNormals;
 	std::string line;
 	while (std::getline(objFile, line))
@@ -28,7 +28,7 @@ void obj::Handler::loadFile(const std::string filename)
 		if (id == "v") {
 			GLfloat x, y, z;
 			iss >> x >> y >> z;
-			verticies.emplace_back(new GLfloat[3]{ x, y, z });
+			vertices.emplace_back(new GLfloat[3]{ x, y, z });
 		}
 		/*else if (id == "vn") {
 			GLfloat x, y, z;
@@ -39,20 +39,20 @@ void obj::Handler::loadFile(const std::string filename)
 			// short for vertex pair _, pair of vertex and vertex normal xyz's
 			std::string vpairx, vpairy, vpairz;
 			iss >> vpairx >> vpairy >> vpairz;
-			int vx, vnx;
+			GLuint vx, vnx;
 			util::separateInt(vpairx, "//", &vx, &vnx);
-			int vy, vny;
+			GLuint vy, vny;
 			util::separateInt(vpairy, "//", &vy, &vny);
-			int vz, vnz;
+			GLuint vz, vnz;
 			util::separateInt(vpairz, "//", &vz, &vnz);
 
-			indicies.emplace_back(new int[3] { vx, vy, vz });
+			indices.emplace_back(new GLuint[3] { vx, vy, vz });
 		}
 	}
 	objFile.close();
 
-	objData.setVerticies(verticies);
-	objData.setIndicies(indicies);
+	objData.setVertices(vertices);
+	objData.setIndices(indices);
 	//objData.setVerticeNormals(verticeNormals);
 }
 
@@ -81,10 +81,10 @@ bool obj::Handler::isFileLoaded(const std::string filename)
 bool obj::File::isValid()
 {
 	if (getName().empty()) { return false; }
-	if (getVerticies().empty()) { return false; }
+	if (getVertices().empty()) { return false; }
 	//if (file->getTexCoords().empty()) { return false; }
 	//if (file->getVerticeNormals().empty()) { return false; }
-	if (getIndicies().empty()) { return false; }
+	if (getIndices().empty()) { return false; }
 
 	return true;
 }

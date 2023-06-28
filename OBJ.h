@@ -8,6 +8,12 @@
 #include<sstream>
 
 #include<glfw/glfw3.h>
+/* Forward Declaration */
+namespace obj 
+{
+	class Handler;
+	class File;
+}
 
 /* Parses .obj file data and distributes related info */
 namespace obj
@@ -29,13 +35,13 @@ namespace obj
 	{
 	private:
 		std::string filename;
-		std::vector<GLfloat[3]> verticies;
-		std::vector<int[3]> indicies;
+		std::vector<GLfloat[3]> vertices;
+		std::vector<GLuint[3]> indices;
 
 	public:
 		File(std::string filename)
 		{
-			filename = this->filename;
+			this->filename = filename;
 		}
 		~File()
 		{
@@ -47,17 +53,17 @@ namespace obj
 		void setName(std::string filename) { this->filename = filename; }
 		std::string getName() const { return filename; }
 
-		void setVerticies(std::vector<GLfloat[3]> verticies) { this->verticies = verticies; }
-		std::vector<GLfloat[3]> getVerticies() const { return verticies; }
+		void setVertices(std::vector<GLfloat[3]> vertices) { this->vertices = vertices; }
+		std::vector<GLfloat[3]> getVertices() const { return vertices; }
 		//std::vector<GLfloat[3]> getTexCoords();
 		//std::vector<GLfloat[3]> getVerticeNormals();
-		void setIndicies(std::vector<int[3]> indicies) { this->indicies = indicies; }
-		std::vector<int[3]> getIndicies() const { return indicies; };
+		void setIndices(std::vector<GLuint[3]> indices) { this->indices = indices; }
+		std::vector<GLuint[3]> getIndices() const { return indices; };
 	};
 
 	namespace util
 	{
-		void separateInt(std::string input, std::string sep, int* val1, int* val2)
+		void separateInt(std::string input, std::string sep, GLuint* val1, GLuint* val2)
 		{
 			std::size_t sepPos = input.find(sep);
 			std::string str1 = input.substr(0, sepPos);
