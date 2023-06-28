@@ -1,8 +1,8 @@
-#ifndef VAO_CLASS_H
-#define VAO_CLASS_H
+#ifndef VAO_CLASS_HPP
+#define VAO_CLASS_HPP
 
 #include<glad/glad.h>
-#include"VBO.h"
+#include"VBO.hpp"
 
 /*	Binding an object makes it the current "selected" object, where all tranformations will be localized
 	Vertex Array Buffers point towards VBOs and tells OpenGL how to interperate them to render */

@@ -6,14 +6,14 @@
 #include<glm/gtc/type_ptr.hpp>
 #include<stb_include.h>
 /* Engine */
-#include"Camera.h"
-#include"Texture.h"
-#include"Shader.h"
-#include"VAO.h"
-#include"VBO.h"
-#include"EBO.h"
-#include"Clock.h"
-#include"OBJ.h"
+#include"Camera.hpp"
+#include"Texture.hpp"
+#include"Shader.hpp"
+#include"VAO.hpp"
+#include"VBO.hpp"
+#include"EBO.hpp"
+#include"Clock.hpp"
+#include"OBJ.hpp"
 
 
 /*

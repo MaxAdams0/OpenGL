@@ -1,6 +1,6 @@
 #pragma once
-#ifndef OBJ_NAMESPACE_H
-#define OBJ_NAMESPACE_H
+#ifndef OBJ_NAMESPACE_HPP
+#define OBJ_NAMESPACE_HPP
 
 #include<fstream>
 #include<string>

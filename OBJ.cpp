@@ -1,4 +1,4 @@
-#include"OBJ.h"
+#include"OBJ.hpp"
 
 void obj::Handler::loadFile(const std::string filename)
 {

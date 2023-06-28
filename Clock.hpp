@@ -1,6 +1,6 @@
 #pragma once
-#ifndef CLOCK_CLASS_H
-#define CLOCK_CLASS_H
+#ifndef CLOCK_CLASS_HPP
+#define CLOCK_CLASS_HPP
 
 class Clock
 {
