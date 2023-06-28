@@ -1,4 +1,4 @@
-#include"VBO.h"
+#include"VBO.hpp"
 
 /*	Generated VBO and binds it to the vertices
 	GLsizeiptr is what OpenGL uses for storing byte sizes*/

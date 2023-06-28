@@ -1,4 +1,4 @@
-#include"VAO.h"
+#include"VAO.hpp"
 
 /* Generates a VAO ID */
 VAO::VAO()
@@ -11,7 +11,7 @@ VAO::VAO()
 void VAO::LinkAttrib(VBO& VBO, GLuint layout, GLuint numComponents, GLenum type, GLsizeiptr stride, void* offset)
 {
 	VBO.Bind();
-	glVertexAttribPointer(layout, numComponents, type, GL_FALSE, stride, offset);
+	glVertexAttribPointer(layout, numComponents, type, GL_FALSE, stride, offset); // lossy conversion from GLsizeiptr to GLsizei
 	glEnableVertexAttribArray(layout);
 	VBO.Unbind();
 }

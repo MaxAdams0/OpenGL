@@ -1,4 +1,4 @@
-#include"Clock.h"
+#include"Clock.hpp"
 #include<ctime>
 
 long int Clock::getTime() {
