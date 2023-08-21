@@ -1,7 +1,7 @@
 #ifndef VAO_CLASS_HPP
 #define VAO_CLASS_HPP
 
-#include<glad/glad.h>
+#include<glad/gl.h>
 #include"VBO.hpp"
 
 /*	Binding an object makes it the current "selected" object, where all tranformations will be localized

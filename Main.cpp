@@ -1,10 +1,10 @@
 /* Installed using vcpkg https://vcpkg.io/en/ Files not included in git repo */
-#include<glad/glad.h>
+#include<glad/gl.h>
 #include<glfw/glfw3.h>
 #include<glm/glm.hpp>
 #include<glm/gtc/matrix_transform.hpp>
 #include<glm/gtc/type_ptr.hpp>
-#include<stb_include.h>
+#include<stb/stb_include.h>
 /* Engine */
 #include"Camera.hpp"
 #include"Texture.hpp"
@@ -13,7 +13,7 @@
 #include"VBO.hpp"
 #include"EBO.hpp"
 #include"Clock.hpp"
-#include"OBJ.hpp"
+#include"OBJ_Loader.hpp"
 
 
 /*
@@ -69,27 +69,26 @@ int main(void)
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
-	gladLoadGL();
+	gladLoadGL(glfwGetProcAddress);
 	glViewport(0, 0, winResW, winResH);
 
 	/* ========== IM SORRY FILELOADING WILL BE LESS MESSY LATER ========== */
 	obj::Handler objHandler;
-	objHandler.loadFile("Peach.obj");
-	if (!objHandler.getFile("Peach.obj").isValid()) { return -1; }
+	objHandler.loadFile("3DS_Cartridge.txt");
+	if (!objHandler.getFile("3DS_Cartridge.txt").isValid()) { return -1; }
 
-	/* Convert std::vector<GLfloat[3]> to GLfloat* (vertices) */
-	std::vector<GLfloat> verticeVertex;
-	size_t elemCountV = verticeVertex.size() * 3;
+	/* Convert std::vector<std::array<GLfloat, 3>> to GLfloat* (vertices) */
+	std::vector<GLfloat> verticeVector;
+	size_t elemCountV = verticeVector.size() * 3;
 	/* A type followed by a pointer is alled a dynamic array */
 	GLfloat* vertices = new GLfloat[elemCountV];
 	/* Copy data from the vector to array */
 	size_t iV = 0;
-	for (const auto& vertex : verticeVertex) {
-		std::copy(vertex, vertex + 3, vertices + iV);
-		iV += 3;
+	for (const auto& vertex : verticeVector) {
+		vertices[iV++] = vertex;
 	}
 
-	/* Convert std::vector<GLfloat[3]> to GLfloat* (vertices) */
+	/* Convert std::vector<std::array<GLuint, 3>> to GLuint* (indices) */
 	std::vector<GLuint> indiceVertex;
 	size_t elemCountI = indiceVertex.size() * 3;
 	/* A type followed by a pointer is alled a dynamic array */
@@ -97,8 +96,7 @@ int main(void)
 	/* Copy data from the vector to array */
 	size_t iI = 0;
 	for (const auto& index : indiceVertex) {
-		std::copy(index, index + 3, indices + iI);
-		iI += 3;
+		indices[iI++] = index;
 	}
 
 	Shader shaderProgram("default.vert", "default.frag");

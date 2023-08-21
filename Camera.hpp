@@ -1,7 +1,7 @@
 #ifndef CAMERA_CLASS_HPP
 #define CAMERA_CLASS_HPP
 
-#include<glad/glad.h>
+#include<glad/gl.h>
 #include<glfw/glfw3.h>
 #include<glm/glm.hpp>
 #include<glm/gtc/matrix_transform.hpp>

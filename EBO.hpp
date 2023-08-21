@@ -1,7 +1,7 @@
 #ifndef EBO_CLASS_HPP
 #define EBO_CLASS_HPP
 
-#include<glad/glad.h>
+#include<glad/gl.h>
 
 /*	Binding an object makes it the current "selected" object, where all tranformations will be localized
 	Element Buffer Objects are objects which use indices to tell the rendering pipeline in what order the vertices are to be drawn */

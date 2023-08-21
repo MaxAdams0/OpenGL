@@ -1,7 +1,7 @@
 #ifndef SHADER_CLASS_HPP
 #define SHADER_CLASS_HPP
 
-#include<glad/glad.h>
+#include<glad/gl.h>
 #include<string>
 #include<fstream>
 #include<sstream>
